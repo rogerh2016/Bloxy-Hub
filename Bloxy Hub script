@@ -1,0 +1,354 @@
+ --[[ local Dropdown = MainTab:CreateDropdown({
+   Name = "Universal [VERY BUGGY]",
+   Options = {"Option 1","Option 2"},
+   CurrentOption = {"Option 1"},
+   MultipleOptions = false,
+   Flag = "Dropdown1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Options)
+   -- The function that takes place when the selected option is changed
+   -- The variable (Options) is a table of strings for the current selected options
+   end,
+})               
+    ]]
+
+
+if game.PlaceId == 1962086868 then
+local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+
+local Window = Rayfield:CreateWindow({
+   Name = "🔥Tower Of Hell🗼",
+   Icon = 0, -- Icon in Topbar. Can use Lucide Icons (string) or Roblox Image (number). 0 to use no icon (default).
+   LoadingTitle = "Local script = script.script",
+   LoadingSubtitle = "Made by Me :p",
+   Theme = "AmberGlow", -- Check https://docs.sirius.menu/rayfield/configuration/themes
+
+   DisableRayfieldPrompts = false,
+   DisableBuildWarnings = false, -- Prevents Rayfield from warning when the script has a version mismatch with the interface
+
+   ConfigurationSaving = {
+      Enabled = false,
+      FolderName = nil, -- Create a custom folder for your hub/game
+      FileName = "Big Hub"
+   },
+
+   Discord = {
+      Enabled = false, -- Prompt the user to join your Discord server if their executor supports it
+      Invite = "noinvitelink", -- The Discord invite code, do not include discord.gg/. E.g. discord.gg/ ABCD would be ABCD
+      RememberJoins = true -- Set this to false to make them join the discord every time they load it up
+   },
+
+   KeySystem = false, -- Set this to true to use our key system
+   KeySettings = {
+      Title = "Untitled",
+      Subtitle = "Key System",
+      Note = "No method of obtaining the key is provided", -- Use this to tell the user how to get a key
+      FileName = "Key", -- It is recommended to use something unique as other scripts using Rayfield may overwrite your key file
+      SaveKey = true, -- The user's key will be saved, but if you change the key, they will be unable to use your script
+      GrabKeyFromSite = false, -- If this is true, set Key below to the RAW site you would like Rayfield to get the key from
+      Key = {"Hello"} -- List of keys that will be accepted by the system, can be RAW file links (pastebin, github etc) or simple strings ("hello","key22")
+   }
+})
+
+
+Rayfield:Notify({
+   Title = "Executed",
+   Content = "E",
+   Duration = 2,
+   Image = nil,
+})
+
+    local GeneralTab = Window:CreateTab("GeneralTab", nil) -- Title, Image
+
+local Button = GeneralTab:CreateButton({
+   Name = "Get Jump Coil FE",
+   Callback = function()
+  local clonedItem = game.ReplicatedStorage.Gear.jump:Clone() -- Clone the item
+clonedItem.Parent = game.Players.LocalPlayer.Backpack -- Set the cloned item’s parent to the player's backpack
+    
+
+                
+                
+   end,
+})
+
+    local Button2 = GeneralTab:CreateButton({
+   Name = "Get Fusion Coil FE",
+   Callback = function()
+  local clonedItem = game.ReplicatedStorage.Gear.fusion:Clone() -- Clone the item
+clonedItem.Parent = game.Players.LocalPlayer.Backpack -- Set the cloned item’s parent to the player's backpack
+
+end, 
+
+})
+
+
+local Slider = GeneralTab:CreateSlider({
+   Name = "JumpPower",
+   Range = {0, 450},
+   Increment = 1,
+   Suffix = "Jump Power",
+   CurrentValue = 50,
+   Flag = "Jumping Power", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+  game.Players.LocalPlayer.Character.Humanoid.JumpPower = (Value)
+   end,
+})
+
+    
+      local OtherTab = Window:CreateTab("DebugTab", nil) -- Title, Image
+     local Button = OtherTab:CreateButton({
+   Name = "Dex",
+   Callback = function()
+ loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-Keyless-mobile-dex-17888"))()
+
+end, 
+
+})
+
+
+
+
+else
+
+local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+
+local Window = Rayfield:CreateWindow({
+   Name = "Universal (VERY BUGGY)",
+   Icon = 0, -- Icon in Topbar. Can use Lucide Icons (string) or Roblox Image (number). 0 to use no icon (default).
+   LoadingTitle = "Local script = script.script",
+   LoadingSubtitle = "Me :p",
+   Theme = "AmberGlow", -- Check https://docs.sirius.menu/rayfield/configuration/themes
+
+   DisableRayfieldPrompts = false,
+   DisableBuildWarnings = false, -- Prevents Rayfield from warning when the script has a version mismatch with the interface
+
+   ConfigurationSaving = {
+      Enabled = false,
+      FolderName = nil, -- Create a custom folder for your hub/game
+      FileName = "Big Hub"
+   },
+
+   Discord = {
+      Enabled = false, -- Prompt the user to join your Discord server if their executor supports it
+      Invite = "noinvitelink", -- The Discord invite code, do not include discord.gg/. E.g. discord.gg/ ABCD would be ABCD
+      RememberJoins = true -- Set this to false to make them join the discord every time they load it up
+   },
+
+   KeySystem = false, -- Set this to true to use our key system
+   KeySettings = {
+      Title = "Untitled",
+      Subtitle = "Key System",
+      Note = "No method of obtaining the key is provided", -- Use this to tell the user how to get a key
+      FileName = "Key", -- It is recommended to use something unique as other scripts using Rayfield may overwrite your key file
+      SaveKey = true, -- The user's key will be saved, but if you change the key, they will be unable to use your script
+      GrabKeyFromSite = false, -- If this is true, set Key below to the RAW site you would like Rayfield to get the key from
+      Key = {"Hello"} -- List of keys that will be accepted by the system, can be RAW file links (pastebin, github etc) or simple strings ("hello","key22")
+   }
+})
+
+local MainTab = Window:CreateTab("Main", nil) -- Title, Image
+local MainSection = MainTab:CreateSection("Main")
+
+Rayfield:Notify({
+   Title = "Executed",
+   Content = "E",
+   Duration = 2,
+   Image = nil,
+})
+
+local Button = MainTab:CreateButton({
+   Name = "Unlimited Jumps",
+   Callback = function()
+   local Player = game:GetService'Players'.LocalPlayer;
+local UIS = game:GetService'UserInputService';
+ 
+_G.JumpHeight = 50;
+ 
+function Action(Object, Function) if Object ~= nil then Function(Object); end end
+ 
+UIS.InputBegan:connect(function(UserInput)
+    if UserInput.UserInputType == Enum.UserInputType.Keyboard and UserInput.KeyCode == Enum.KeyCode.Space then
+        Action(Player.Character.Humanoid, function(self)
+            if self:GetState() == Enum.HumanoidStateType.Jumping or self:GetState() == Enum.HumanoidStateType.Freefall then
+                Action(self.Parent.HumanoidRootPart, function(self)
+                    self.Velocity = Vector3.new(0, _G.JumpHeight, 0);
+                end)
+            end
+        end)
+    end
+end)
+   end,
+})
+
+local Button2 = MainTab:CreateButton({
+   Name = "Kill (OnlySelf)",
+   Callback = function() 
+function Action(Object, Function) if Object ~= nil then Function(Object); end end
+game.Players.LocalPlayer.Character.Humanoid.Health = 0
+   end,
+})
+
+local Button3 = MainTab:CreateButton({
+   Name = "Remove From Game (OnlySelf)",
+   Callback = function() 
+function Action(Object, Function) if Object ~= nil then Function(Object); end end
+game.Players.LocalPlayer:Remove()
+   end,
+})
+        
+
+local Slider = MainTab:CreateSlider({
+   Name = "WalkSpeed",
+   Range = {0, 500},
+   Increment = 1,
+   Suffix = "Speed",
+   CurrentValue = 16,
+   Flag = "Slider1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+          game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = (Value)
+   end,
+})      
+        local Slider2 = MainTab:CreateSlider({
+   Name = "JumpPower",
+   Range = {0, 150},
+   Increment = 1,
+   Suffix = "Jump",
+   CurrentValue = 50,
+   Flag = "Slider2", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+          game.Players.LocalPlayer.Character.Humanoid.JumpPower = (Value)
+   end,
+})      
+         local Slider3 = MainTab:CreateSlider({
+   Name = "Health",
+   Range = {0, 10000},
+   Increment = 1,
+   Suffix = "Health",
+   CurrentValue = 100,
+   Flag = "Slider3", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+          game.Players.LocalPlayer.Character.Humanoid.Health = (Value)
+   end,
+})      
+    local MiscTab = Window:CreateTab("☀️Misc🌙", nil) -- Title, Image
+   local Section = MiscTab:CreateSection("TpTool")
+        local Button = MiscTab:CreateButton({
+   Name = "TeleportTool",
+   Callback = function()
+   -- Teleport Tool | Script By: shmek#4622
+bin=Instance.new("HopperBin",game.Players.LocalPlayer.Backpack)
+bin.Name = "Teleport"
+ 
+function teleportPlayer(pos)
+ 
+local player = game.Players.LocalPlayer
+if player == nil or player.Character == nil then return end
+ 
+local char = player.Character
+ 
+char:MoveTo(pos)
+ 
+end
+ 
+ 
+enabled = true
+function onButton1Down(mouse)
+if not enabled then
+return
+end
+ 
+local player = game.Players.LocalPlayer
+if player == nil then return end
+local cf = mouse.Hit
+teleportPlayer(cf.p)
+ 
+end
+ 
+function onSelected(mouse)
+mouse.Icon = "rbxassetUndecided/textures\\ArrowCursor.png"
+mouse.Button1Down:connect(function() onButton1Down(mouse) end)
+end
+ 
+bin.Selected:connect(onSelected)
+   end,
+})
+
+local Button = MiscTab:CreateButton({
+   Name = "CrashGame",
+   Callback = function()
+   while true do
+        print("Lil bros game is gonna be crashed lol")
+        end
+   end,
+
+})
+
+    local Toggle = MiscTab:CreateToggle({
+   Name = "Toggle Example",
+   CurrentValue = false,
+   Flag = "Toggle On/off", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+local players = game:GetService("Players")
+local localplayer = players.LocalPlayer
+local torso = localplayer.Character.HumanoidRootPart 
+local hum = localplayer.Character:FindFirstChildOfClass("Humanoid")
+local mouse = localplayer:GetMouse()
+local enabled = true
+local running = true
+local dir = {w = 0, s = 0, a = 0, d = 0} 
+local spd = 2 
+    
+local moos = mouse.KeyDown:connect(function(key)
+    if key:lower() == "w" then 
+        dir.w = 1 
+    elseif key:lower() == "s" then 
+        dir.s = 1 
+    elseif key:lower() == "a" then 
+        dir.a = 1 
+    elseif key:lower() == "d" then 
+        dir.d = 1 
+    elseif key:lower() == "t" then 
+        spd = spd + 1 
+    elseif key:lower() == "y" then 
+        spd = spd - 1 
+    elseif key:lower() == "z" then
+        running = false
+    end 
+end) 
+ 
+local moos1 = mouse.KeyUp:connect(function(key)
+    if key:lower() == "w" then 
+        dir.w = 0 
+    elseif key:lower() == "s" then 
+        dir.s = 0 
+    elseif key:lower() == "a" then 
+        dir.a = 0 
+    elseif key:lower() == "d" then 
+        dir.d = 0 
+    end 
+end) 
+                    
+torso.Anchored = true 
+hum.PlatformStand = true 
+local macka = hum.Changed:connect(function() 
+    hum.PlatformStand = true 
+end) 
+ 
+repeat 
+    if enabled == false then
+        running = false
+        break
+    end
+    wait(1/60)
+    torso.CFrame = CFrame.new(torso.Position, workspace.CurrentCamera.CoordinateFrame.p) * CFrame.Angles(0,math.rad(180),0) * CFrame.new((dir.d-dir.a)*spd,0,(dir.s-dir.w)*spd) 
+until not running or hum.Parent == nil or torso.Parent == nil or not enabled
+ 
+moos:disconnect()
+moos1:disconnect()
+macka:disconnect()
+torso.Anchored = false
+hum.PlatformStand = false
+   end,
+        
+})
+   end    
