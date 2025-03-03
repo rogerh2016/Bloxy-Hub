@@ -2,7 +2,7 @@
    Name = "Universal [VERY BUGGY]",
    Options = {"Option 1","Option 2"},
    CurrentOption = {"Option 1"},
-   MultipleOptions = false,
+   MultipleOptions = true,
    Flag = "Dropdown1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
    Callback = function(Options)
    -- The function that takes place when the selected option is changed
@@ -10,9 +10,13 @@
    end,
 })               
     ]]
-
-
-if game.PlaceId == 1962086868 then
+local jobId = game.JobId
+local PlaceId = game.PlaceId
+if PlaceId == nil then
+    print("player not in game")
+elseif PlaceId == 1962086868 and PlaceId ~= 11033332061650 then
+    print("Tower of Hell")
+    task.wait(.5)
 local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
 local Window = Rayfield:CreateWindow({
@@ -82,6 +86,16 @@ end,
 })
 
 
+    local Button3 = GeneralTab:CreateButton({
+   Name = "Anti-Ban Bypass (MiGHT NOT WORK, HAVEN'T TESTED YET NOR CONFIRMED",
+   Callback = function()
+  game.ReplicatedStorage.getBans:Destroy()
+                game.ReplicatedStorage.appealBan:Destroy
+
+end, 
+
+})
+
 local Slider = GeneralTab:CreateSlider({
    Name = "JumpPower",
    Range = {0, 450},
@@ -105,12 +119,11 @@ end,
 
 })
 
-
-
-
-elseif game.PlaceId ==  138837502355157 then
-
-
+        
+elseif PlaceId == 11033332061650 then
+    -- Grace Game
+    print("Grace was detected")
+task.wait(.5)
 local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
 local Window = Rayfield:CreateWindow({
@@ -150,26 +163,55 @@ local Window = Rayfield:CreateWindow({
 
 
 local MainTab = Window:CreateTab("MainTab", nil) -- Title, Image
-  local Button = Tab:CreateButton({
-   Name = "Delete Kill remote",
+  local Button = MainTab:CreateButton({
+   Name = "Remove KillClient",
    Callback = function()
-   game.ReplicatedStorage.KillClient:Destory()
+    game.ReplicatedStorage.KillClient:Destroy()   
+   end,
+})
+
+local Button2 = MainTab:CreateButton({
+   Name = "Remove GoatMan",
+   Callback = function()
+    game.ReplicatedStorage.SendGoatman:Destroy()   
+   end,
+})
+
+    local Button3 = MainTab:CreateButton({
+   Name = "Remove Slugfish",
+   Callback = function()
+    game.ReplicatedStorage.SendWorm:Destroy()   
+   end,
+})
+
+      local Button4 = MainTab:CreateButton({
+   Name = "Remove Carnation",
+   Callback = function()
+    game.ReplicatedStorage.SendRush:Destroy()   
+   end,
+})
+
+     local Button5 = MainTab:CreateButton({
+   Name = "Remove EyeGui (Only 1 per)",
+   Callback = function()
+                local Eyegui = game.ReplicatedStorage.eyegui
+                
+                while true do
+                    task.wait(.5)
+                    game.Players.PlayerGui.eyegui:Destroy()
+                
+     end           
    end,
 })
 
 
-
-
-
-
-
-
-
-
     
-else
-
+elseif PlaceId ~= 11033332061650 then
+print("Universal")
+    task.wait(.5)
+    print("PlaceId:", PlaceId, "Type:", typeof(PlaceId))
 local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+    
 
 local Window = Rayfield:CreateWindow({
    Name = "Universal (VERY BUGGY)",
@@ -221,7 +263,8 @@ local Button = MainTab:CreateButton({
    local Player = game:GetService'Players'.LocalPlayer;
 local UIS = game:GetService'UserInputService';
  
-_G.JumpHeight = 50;
+_G.JumpHeight = game.Players.LocalPlayer.Character.Humanoid.JumpPower
+
  
 function Action(Object, Function) if Object ~= nil then Function(Object); end end
  
@@ -336,7 +379,7 @@ local Button = MiscTab:CreateButton({
    Name = "CrashGame",
    Callback = function()
    while true do
-        print("Lil bros game is gonna be crashed lol")
+        task.print("Lil bros game is gonna be crashed lol")
         end
    end,
 
@@ -347,67 +390,72 @@ local Button = MiscTab:CreateButton({
    CurrentValue = false,
    Flag = "Toggle On/off", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
    Callback = function(Value)
-local players = game:GetService("Players")
-local localplayer = players.LocalPlayer
-local torso = localplayer.Character.HumanoidRootPart 
-local hum = localplayer.Character:FindFirstChildOfClass("Humanoid")
-local mouse = localplayer:GetMouse()
-local enabled = true
-local running = true
-local dir = {w = 0, s = 0, a = 0, d = 0} 
-local spd = 2 
-    
-local moos = mouse.KeyDown:connect(function(key)
-    if key:lower() == "w" then 
-        dir.w = 1 
-    elseif key:lower() == "s" then 
-        dir.s = 1 
-    elseif key:lower() == "a" then 
-        dir.a = 1 
-    elseif key:lower() == "d" then 
-        dir.d = 1 
-    elseif key:lower() == "t" then 
-        spd = spd + 1 
-    elseif key:lower() == "y" then 
-        spd = spd - 1 
-    elseif key:lower() == "z" then
-        running = false
-    end 
-end) 
- 
-local moos1 = mouse.KeyUp:connect(function(key)
-    if key:lower() == "w" then 
-        dir.w = 0 
-    elseif key:lower() == "s" then 
-        dir.s = 0 
-    elseif key:lower() == "a" then 
-        dir.a = 0 
-    elseif key:lower() == "d" then 
-        dir.d = 0 
-    end 
-end) 
-                    
-torso.Anchored = true 
-hum.PlatformStand = true 
-local macka = hum.Changed:connect(function() 
-    hum.PlatformStand = true 
-end) 
- 
-repeat 
-    if enabled == false then
-        running = false
-        break
+local UserInputService = game:GetService("UserInputService")
+local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
+local Character = LocalPlayer.Character or LocalPlayer.CharacterAdded:Wait()
+local HumanoidRootPart = Character:WaitForChild("HumanoidRootPart")
+local Humanoid = Character:FindFirstChildOfClass("Humanoid")
+
+local enabled = false
+local speed = 2
+local direction = {w = 0, s = 0, a = 0, d = 0}
+
+local function onInputBegan(input, gameProcessed)
+    if gameProcessed then return end
+    local key = input.KeyCode
+
+    if key == Enum.KeyCode.W then
+        direction.w = 1
+    elseif key == Enum.KeyCode.S then
+        direction.s = 1
+    elseif key == Enum.KeyCode.A then
+        direction.a = 1
+    elseif key == Enum.KeyCode.D then
+        direction.d = 1
+    elseif key == Enum.KeyCode.T then
+        speed = speed + 1
+    elseif key == Enum.KeyCode.Y then
+        speed = math.max(1, speed - 1)
+    elseif key == Enum.KeyCode.Z then
+        enabled = false
     end
-    wait(1/60)
-    torso.CFrame = CFrame.new(torso.Position, workspace.CurrentCamera.CoordinateFrame.p) * CFrame.Angles(0,math.rad(180),0) * CFrame.new((dir.d-dir.a)*spd,0,(dir.s-dir.w)*spd) 
-until not running or hum.Parent == nil or torso.Parent == nil or not enabled
- 
-moos:disconnect()
-moos1:disconnect()
-macka:disconnect()
-torso.Anchored = false
-hum.PlatformStand = false
-   end,
-        
-})
-   end    
+end
+
+local function onInputEnded(input, gameProcessed)
+    if gameProcessed then return end
+    local key = input.KeyCode
+
+    if key == Enum.KeyCode.W then
+        direction.w = 0
+    elseif key == Enum.KeyCode.S then
+        direction.s = 0
+    elseif key == Enum.KeyCode.A then
+        direction.a = 0
+    elseif key == Enum.KeyCode.D then
+        direction.d = 0
+    end
+end
+
+UserInputService.InputBegan:Connect(onInputBegan)
+UserInputService.InputEnded:Connect(onInputEnded)
+
+local function startFlying()
+    enabled = true
+    Humanoid.PlatformStand = true
+
+    while enabled and Character and HumanoidRootPart.Parent do
+        task.wait(1/60)
+        HumanoidRootPart.CFrame = CFrame.new(
+            HumanoidRootPart.Position,
+            workspace.CurrentCamera.CFrame.Position
+        ) * CFrame.Angles(0, math.rad(180), 0) * 
+        CFrame.new((direction.d - direction.a) * speed, 0, (direction.s - direction.w) * speed)
+    end
+
+    Humanoid.PlatformStand = false
+end
+end,
+    })
+   end  
+                        
