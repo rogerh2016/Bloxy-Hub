@@ -90,7 +90,7 @@ end,
    Name = "Anti-Ban Bypass (MiGHT NOT WORK, HAVEN'T TESTED YET NOR CONFIRMED",
    Callback = function()
   game.ReplicatedStorage.getBans:Destroy()
-                game.ReplicatedStorage.appealBan:Destroy
+                game.ReplicatedStorage.appealBan:Destroy()
 
 end, 
 
